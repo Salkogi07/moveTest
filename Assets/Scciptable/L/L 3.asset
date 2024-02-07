@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d4320cf179a8d43af4ce888b7e7ac7, type: 3}
   m_Name: L 3
   m_EditorClassIdentifier: 
+  image: {fileID: 227956729, guid: 755b1f2650f549344a1af1c2b2640a01, type: 3}
   charaterName: "\uBCD1\uC900L3"
   charaterGrade: Legendary
   charaterIndex: 3

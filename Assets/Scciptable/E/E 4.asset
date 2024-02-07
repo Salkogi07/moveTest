@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d4320cf179a8d43af4ce888b7e7ac7, type: 3}
   m_Name: E 4
   m_EditorClassIdentifier: 
-  image: {fileID: 102029871, guid: 51f702e64a57edd4aa8dea622d772666, type: 3}
+  image: {fileID: 227956729, guid: 755b1f2650f549344a1af1c2b2640a01, type: 3}
   charaterName: "\uBCD1\uC900E4"
   charaterGrade: Epic
   charaterIndex: 4

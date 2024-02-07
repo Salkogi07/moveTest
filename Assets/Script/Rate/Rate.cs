@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using System;
+using Unity.VisualScripting;
 
 public enum CharacterGrade
 {
@@ -12,8 +14,9 @@ public enum CharacterGrade
 
 public class Rate : MonoBehaviour
 {
-    public Text text;
+    public static Rate instance;
 
+    public UIDrowingScene ui;
 
     [Header("뽑기 결과 정보")]
     public Charater resultOneRate;
@@ -25,42 +28,42 @@ public class Rate : MonoBehaviour
     public string charaterGrade;
     public int charaterIndex;
 
-    [Header("뽑기 확률 설정")]
-    public float rareRate = 40f;
-    public float epicRate = 5.1f;
-    public float epicRateUp = 56.1f;
-    public float legendaryRate = 0.6f;
-    public float legendaryRateUp = 0.6f;
+    
 
-    [Header("특정 최고등급 캐릭터 픽업 확률 설정")]
-    public float pickupRate = 10f;
-
-    [Header("천장 시스템 관련 변수")]
-    private int legendaryPullCount = 0;
-    public int legendaryCeilingStep1 = 74;
-    public int legendaryCeilingStep2 = 90;
-
-    private int epicPullCount = 0;
-    public int epicCeilingStep1 = 9;
-    public int epicCeilingStep2 = 10;
+    private void Start()
+    {
+        ui.UpdateJewel();
+    }
 
     public void StartOneGrade()
     {
-        resultOne.gameObject.SetActive(true);
-        CharacterGrade result = CheckCeiling();
-        ResultOne(result);
-        Debug.Log("뽑기 결과: " + result);
+        if (GameManager.Instance.Jewel >= 160)
+        {
+            GameManager.Instance.Jewel -= 160;
+            ui.UpdateJewel();
+            resultOne.gameObject.SetActive(true);
+            CharacterGrade result = CheckCeiling();
+            ResultOne(result);
+            Debug.Log("뽑기 결과: " + result);
+        }
+        else return;
     }
 
     public void StartTenGrade()
     {
-        resultTen.gameObject.SetActive(true);
-        for (int i = 0; i < 10; i++)
+        if (GameManager.Instance.Jewel >= 1600)
         {
-            CharacterGrade result = CheckCeiling();
-            ResultTen(result, i);
-            Debug.Log("뽑기 결과: " + result);
+            GameManager.Instance.Jewel -= 1600;
+            ui.UpdateJewel();
+            resultTen.gameObject.SetActive(true);
+            for (int i = 0; i < 10; i++)
+            {
+                CharacterGrade result = CheckCeiling();
+                ResultTen(result, i);
+                Debug.Log("뽑기 결과: " + result);
+            }
         }
+        else return;
     }
 
     private void ResultOne(CharacterGrade grade)
@@ -120,33 +123,33 @@ public class Rate : MonoBehaviour
     // 천장 시스템 확인 및 최고등급 캐릭터 보장
     private CharacterGrade CheckCeiling()
     {
-        legendaryPullCount++;
-        epicPullCount++;
+        GameManager.Instance.legendaryPullCount++;
+        GameManager.Instance.epicPullCount++;
         return LegendaryRate();
     }
 
     private CharacterGrade LegendaryRate()
     {
         //천장 체크
-        if (legendaryPullCount >= legendaryCeilingStep2)
+        if (GameManager.Instance.legendaryPullCount >= GameManager.Instance.legendaryCeilingStep2)
         {
-            legendaryPullCount = 0; // Reset pull count
-            legendaryRateUp = legendaryRate;
-            text.text = $"전설 스택: {legendaryPullCount}\n에픽 스택: {epicPullCount}";
+            GameManager.Instance.legendaryPullCount = 0; // Reset pull count
+            GameManager.Instance.legendaryRateUp = GameManager.Instance.legendaryRate;
+            ui.UpdateRate();
             return CharacterGrade.Legendary;
         }
-        else if (legendaryCeilingStep1 <= legendaryPullCount)
+        else if (GameManager.Instance.legendaryCeilingStep1 <= GameManager.Instance.legendaryPullCount)
         {
-            legendaryRateUp += 6f;
+            GameManager.Instance.legendaryRateUp += 6f;
         }
 
         float randomValue = UnityEngine.Random.Range(0f, 100f);
 
-        if (randomValue < legendaryRateUp)
+        if (randomValue < GameManager.Instance.legendaryRateUp)
         {
-            legendaryPullCount = 0; // Reset pull count
-            legendaryRateUp = legendaryRate;
-            text.text = $"전설 스택: {legendaryPullCount}\n에픽 스택: {epicPullCount}";
+            GameManager.Instance.legendaryPullCount = 0; // Reset pull count
+            GameManager.Instance.legendaryRateUp = GameManager.Instance.legendaryRate;
+            ui.UpdateRate();
             return CharacterGrade.Legendary;
         }
         else
@@ -157,28 +160,28 @@ public class Rate : MonoBehaviour
 
     private CharacterGrade EpicRate(ref float randomValue)
     {
-        if (epicPullCount >= epicCeilingStep2)
+        if (GameManager.Instance.epicPullCount >= GameManager.Instance.epicCeilingStep2)
         {
-            epicPullCount = 0; // Reset pull count
-            text.text = $"전설 스택: {legendaryPullCount}\n에픽 스택: {epicPullCount}";
+            GameManager.Instance.epicPullCount = 0; // Reset pull count
+            ui.UpdateRate();
             return CharacterGrade.Epic;
         }
-        else if (epicPullCount == epicCeilingStep1)
+        else if (GameManager.Instance.epicPullCount == GameManager.Instance.epicCeilingStep1)
         {
             randomValue = UnityEngine.Random.Range(0f, 100f);
-            if (randomValue < epicRateUp)
+            if (randomValue < GameManager.Instance.epicRateUp)
             {
-                epicPullCount = 0;
-                text.text = $"전설 스택: {legendaryPullCount}\n에픽 스택: {epicPullCount}";
+                GameManager.Instance.epicPullCount = 0;
+                ui.UpdateRate();
                 return CharacterGrade.Epic;
             }
             else
             {
                 randomValue = UnityEngine.Random.Range(0f, 100f);
-                if (randomValue < epicRate)
+                if (randomValue < GameManager.Instance.epicRate)
                 {
-                    epicPullCount = 0;
-                    text.text = $"전설 스택: {legendaryPullCount}\n에픽 스택: {epicPullCount}";
+                    GameManager.Instance.epicPullCount = 0;
+                    ui.UpdateRate();
                     return CharacterGrade.Epic;
                 }
                 else
@@ -196,14 +199,14 @@ public class Rate : MonoBehaviour
     private CharacterGrade RareRate(out float randomValue)
     {
         randomValue = UnityEngine.Random.Range(0f, 100f);
-        if (randomValue < rareRate)
+        if (randomValue < GameManager.Instance.rareRate)
         {
-            text.text = $"전설 스택: {legendaryPullCount}\n에픽 스택: {epicPullCount}";
+            ui.UpdateRate();
             return CharacterGrade.Rare;
         }
         else
         {
-            text.text = $"전설 스택: {legendaryPullCount}\n에픽 스택: {epicPullCount}";
+            ui.UpdateRate();
             return CharacterGrade.Common;
         }
     }
@@ -211,7 +214,7 @@ public class Rate : MonoBehaviour
     // 특정 최고등급 캐릭터 픽업 여부 확인
     public bool IsPickup(CharacterGrade grade)
     {
-        if (grade == CharacterGrade.Legendary && UnityEngine.Random.Range(0f, 100f) < pickupRate)
+        if (grade == CharacterGrade.Legendary && UnityEngine.Random.Range(0f, 100f) < GameManager.Instance.pickupRate)
             return true;
 
         return false;

@@ -20,7 +20,7 @@ public class UI_ItemSlot : MonoBehaviour
         {
             itemImage.sprite = item.data.image;
             if (item.data.charaterGrade == "Common")
-                charaterGradeImage.color = new Color(1f, 1f, 1f);  // Èò»ö
+                charaterGradeImage.color = new Color(128f / 255f, 128f / 255f, 128f / 255f);  // Èò»ö
             else if (item.data.charaterGrade == "Rare")
                 charaterGradeImage.color = new Color(73f / 255f, 158f / 255f, 221f / 255f);
             else if (item.data.charaterGrade == "Epic")

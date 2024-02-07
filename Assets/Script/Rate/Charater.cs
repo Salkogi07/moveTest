@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Charater : MonoBehaviour
 {
-    [SerializeField] public CharacterDB characterDB;
+    [SerializeField] private CharacterDB characterDB;
     [SerializeField] private Image charaterEffect;
     [SerializeField] private Text text;
     [SerializeField] private Image charater;
@@ -16,7 +16,7 @@ public class Charater : MonoBehaviour
         Data data = characterDB.GetCharaterData(grade, index);
 
         if (charaterGrade == "Common")
-            charaterEffect.color = new Color(1f, 1f, 1f);  // Èò»ö
+            charaterEffect.color = new Color(128f / 255f, 128f / 255f, 128f / 255f);  // Èò»ö
         else if (charaterGrade == "Rare")
             charaterEffect.color = new Color(73f / 255f, 158f / 255f, 221f / 255f);
         else if (charaterGrade == "Epic")

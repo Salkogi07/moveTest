@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d4320cf179a8d43af4ce888b7e7ac7, type: 3}
   m_Name: R 2
   m_EditorClassIdentifier: 
-  image: {fileID: 102029871, guid: 51f702e64a57edd4aa8dea622d772666, type: 3}
+  image: {fileID: -40071680, guid: 78cb7a5f69c5131488005ef31d6c1030, type: 3}
   charaterName: "\uBCD1\uC900R2"
   charaterGrade: Rare
   charaterIndex: 2

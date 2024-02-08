@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
 
     public List<InventoryItem> inventoryItems;
-    public Dictionary<Data, InventoryItem> inventoryDictionary;
+    public Dictionary<CharaterData, InventoryItem> inventoryDictionary;
 
     private void Awake()
     {
@@ -23,10 +23,10 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         inventoryItems = new List<InventoryItem>();
-        inventoryDictionary = new Dictionary<Data, InventoryItem>();
+        inventoryDictionary = new Dictionary<CharaterData, InventoryItem>();
     }
 
-    public void AddItem(Data _item)
+    public void AddItem(CharaterData _item)
     {
         if (inventoryDictionary.TryGetValue(_item, out InventoryItem value))
         {
@@ -40,7 +40,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void RemoveItem(Data _item)
+    public void RemoveItem(CharaterData _item)
     {
         if (inventoryDictionary.TryGetValue(_item, out InventoryItem value))
         {

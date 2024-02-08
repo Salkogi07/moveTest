@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 2805416308420094337}
   - component: {fileID: 7708810167187906295}
   m_Layer: 5
-  m_Name: Charater
+  m_Name: CharaterRateSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

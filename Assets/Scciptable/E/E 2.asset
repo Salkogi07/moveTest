@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: E 2
   m_EditorClassIdentifier: 
   image: {fileID: -40071680, guid: 78cb7a5f69c5131488005ef31d6c1030, type: 3}
+  MainMovecharater: {fileID: 5546996067201300150, guid: f2e5cbbc640551c4fa88746587c048eb, type: 3}
   charaterName: "\uBCD1\uC900E2"
   charaterGrade: Epic
   charaterIndex: 2

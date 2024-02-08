@@ -4,10 +4,10 @@ using UnityEngine;
 public class CharacterDB : MonoBehaviour
 {
     [Header("Ä³¸¯ÅÍ DB")]
-    public Data[] CharaterCommon;
-    public Data[] CharaterRare;
-    public Data[] CharaterEpic;
-    public Data[] CharaterLegendary;
+    public CharaterData[] CharaterCommon;
+    public CharaterData[] CharaterRare;
+    public CharaterData[] CharaterEpic;
+    public CharaterData[] CharaterLegendary;
 
     public string[] GetCharacterInfo(string grade, int index)
     {
@@ -145,9 +145,9 @@ public class CharacterDB : MonoBehaviour
         }
     }
 
-    public Data GetCharaterData(string grade, int index)
+    public CharaterData GetCharaterData(string grade, int index)
     {
-        Data data;
+        CharaterData data;
 
         try
         {

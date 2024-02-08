@@ -12,17 +12,17 @@ public enum CharacterGrade
     Legendary
 }
 
-public class Rate : MonoBehaviour
+public class CharaterRate : MonoBehaviour
 {
-    public static Rate instance;
+    public static CharaterRate instance;
 
     public UIDrowingScene ui;
 
     [Header("뽑기 결과 정보")]
-    public Charater resultOneRate;
+    public CharaterRateUI resultOneRate;
     public Image resultOne;
 
-    public Charater[] resultTenRate;
+    public CharaterRateUI[] resultTenRate;
     public Image resultTen;
 
     public string charaterGrade;

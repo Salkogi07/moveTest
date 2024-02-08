@@ -18,7 +18,7 @@ public class UIMainScene : MonoBehaviour
     private UI_ItemSlot[] itemSlot;
 
     public List<InventoryItem> inventoryItems;
-    public Dictionary<Data, InventoryItem> inventoryDictionary;
+    public Dictionary<CharaterData, InventoryItem> inventoryDictionary;
 
     // Start is called before the first frame update
     void Start()

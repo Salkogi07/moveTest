@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: R 4
   m_EditorClassIdentifier: 
   image: {fileID: 227956729, guid: 755b1f2650f549344a1af1c2b2640a01, type: 3}
+  MainMovecharater: {fileID: 116645981081544582, guid: 269c902c4d414ed47955f5b0028f256e, type: 3}
   charaterName: "\uBCD1\uC900R4"
   charaterGrade: Rare
   charaterIndex: 4

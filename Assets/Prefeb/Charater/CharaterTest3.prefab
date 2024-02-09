@@ -200,5 +200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf341e26c5f9354ebd99084196c8ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move_delay: 6
+  move_delay_min: 2
+  move_delay_max: 6
   move_time: 3

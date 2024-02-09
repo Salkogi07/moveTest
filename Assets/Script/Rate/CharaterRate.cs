@@ -17,6 +17,7 @@ public class CharaterRate : MonoBehaviour
     public static CharaterRate instance;
 
     public UIDrowingScene ui;
+    private CharacterDB characterDB;
 
     [Header("뽑기 결과 정보")]
     public CharaterRateUI resultOneRate;
@@ -33,6 +34,7 @@ public class CharaterRate : MonoBehaviour
     private void Start()
     {
         ui.UpdateJewel();
+        characterDB = GetComponent<CharacterDB>();
     }
 
     public void StartOneGrade()
@@ -68,26 +70,30 @@ public class CharaterRate : MonoBehaviour
 
     private void ResultOne(CharacterGrade grade)
     {
+        int Commonlength = characterDB.CharaterCommon.Length;
+        int Rarelength = characterDB.CharaterRare.Length;
+        int Epiclength = characterDB.CharaterEpic.Length;
+        int Legendarylength = characterDB.CharaterLegendary.Length;
         if (resultOneRate != null)
         {
             if (grade == CharacterGrade.Common)
             {
-                int randomValue = UnityEngine.Random.Range(1, 4);
+                int randomValue = UnityEngine.Random.Range(1, Commonlength);
                 resultOneRate.ResultRate("Common", randomValue);
             }
             else if (grade == CharacterGrade.Rare)
             {
-                int randomValue = UnityEngine.Random.Range(1, 5);
+                int randomValue = UnityEngine.Random.Range(1, Rarelength);
                 resultOneRate.ResultRate("Rare", randomValue);
             }
             else if (grade == CharacterGrade.Epic)
             {
-                int randomValue = UnityEngine.Random.Range(1, 5);
+                int randomValue = UnityEngine.Random.Range(1, Epiclength);
                 resultOneRate.ResultRate("Epic", randomValue);
             }
             else if (grade == CharacterGrade.Legendary)
             {
-                int randomValue = UnityEngine.Random.Range(1, 5);
+                int randomValue = UnityEngine.Random.Range(1, Legendarylength);
                 resultOneRate.ResultRate("Legendary", randomValue);
             }
         }
@@ -95,26 +101,31 @@ public class CharaterRate : MonoBehaviour
 
     private void ResultTen(CharacterGrade grade, int index)
     {
+        int Commonlength = characterDB.CharaterCommon.Length;
+        int Rarelength = characterDB.CharaterRare.Length;
+        int Epiclength = characterDB.CharaterEpic.Length;
+        int Legendarylength = characterDB.CharaterLegendary.Length;
+
         if (resultTenRate != null && index < resultTenRate.Length && resultTenRate[index] != null)
         {
             if (grade == CharacterGrade.Common)
             {
-                int randomValue = UnityEngine.Random.Range(1, 4);
+                int randomValue = UnityEngine.Random.Range(1, Commonlength);
                 resultTenRate[index].ResultRate("Common", randomValue);
             }
             else if (grade == CharacterGrade.Rare)
             {
-                int randomValue = UnityEngine.Random.Range(1, 5);
+                int randomValue = UnityEngine.Random.Range(1, Rarelength);
                 resultTenRate[index].ResultRate("Rare", randomValue);
             }
             else if (grade == CharacterGrade.Epic)
             {
-                int randomValue = UnityEngine.Random.Range(1, 5);
+                int randomValue = UnityEngine.Random.Range(1, Epiclength);
                 resultTenRate[index].ResultRate("Epic", randomValue);
             }
             else if (grade == CharacterGrade.Legendary)
             {
-                int randomValue = UnityEngine.Random.Range(1, 5);
+                int randomValue = UnityEngine.Random.Range(1, Legendarylength);
                 resultTenRate[index].ResultRate("Legendary", randomValue);
             }
         }

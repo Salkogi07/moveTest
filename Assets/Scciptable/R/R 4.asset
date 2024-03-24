@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d4320cf179a8d43af4ce888b7e7ac7, type: 3}
   m_Name: R 4
   m_EditorClassIdentifier: 
-  image: {fileID: 227956729, guid: 755b1f2650f549344a1af1c2b2640a01, type: 3}
-  MainMovecharater: {fileID: 116645981081544582, guid: 269c902c4d414ed47955f5b0028f256e, type: 3}
-  charaterName: "\uBCD1\uC900R4"
+  image: {fileID: 21300000, guid: 1ca26d1a51ba922439adcbd17c139a5f, type: 3}
+  MainMovecharater: {fileID: 82478683331889979, guid: 9f5095f8f4f265149a0e950255e5f0c0, type: 3}
+  charaterName: "\uC694\uB9AC\uC0AC \uBCD1\uC900"
   charaterGrade: Rare
   charaterIndex: 4

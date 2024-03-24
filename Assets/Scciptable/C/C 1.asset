@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d4320cf179a8d43af4ce888b7e7ac7, type: 3}
   m_Name: C 1
   m_EditorClassIdentifier: 
-  image: {fileID: 102029871, guid: 51f702e64a57edd4aa8dea622d772666, type: 3}
+  image: {fileID: 1962329707, guid: 2417df2b031addd4a812e5c04c40e884, type: 3}
   MainMovecharater: {fileID: 82478683331889979, guid: 63ffc63df408fd34bb4ff22d85538e29, type: 3}
-  charaterName: "\uBCD1\uC900C1"
+  charaterName: "\uC7A5\uBCD1\uC900"
   charaterGrade: Common
   charaterIndex: 1
